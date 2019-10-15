@@ -12,6 +12,11 @@ App.ClickCounter = _data => {
 
     count() {
       data.value++
+    },
+
+    setCountFn(func) {
+      this.count = () => { data.value = func(data.value); };
+      return this;
     }
   }
 }
