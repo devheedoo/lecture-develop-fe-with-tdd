@@ -1,15 +1,19 @@
 var App = App || {}
 
-App.ClickCounter = () => {
-  let value = 0
+App.ClickCounter = (data) => {
+  if (!data) throw Error('No data');
+
+  data.value = data.value || 0;
 
   return {
     getValue() {
-      return value
+      return data.value
     },
-
     increase() {
-      value++
+      data.value++
+    },
+    decrease() {
+      value--
     }
   }
 }
