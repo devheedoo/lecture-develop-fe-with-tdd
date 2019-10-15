@@ -1,18 +1,26 @@
 <html>
   <body>
+    <button id="btn-dec">-</button>
+    <button id="btn-inc">+</button>
     <span id="counter-display"></span>
-    <button id="btn-increase">Increase</button>
 
     <script src="ClickCounter.js"></script>
     <script src="ClickCountView.js"></script>
 
     <script>
       (() => {
-        const clickCounter = App.ClickCounter()
+        const data = { value: 0 };
+        const counterDec = App.ClickCounter(data).setCountFn(value => value - 1);
+        const counterInc = App.ClickCounter(data).setCountFn(value => value + 2);
+
         const updateEl = document.querySelector('#counter-display')
-        const triggerEl = document.querySelector('#btn-increase')
-        const view = App.ClickCountView(clickCounter, {updateEl, triggerEl})
-        view.updateView()
+        const btnDec = document.querySelector('#btn-dec');
+        const btnInc = document.querySelector('#btn-inc');
+
+        const decCounterView = App.ClickCountView(counterDec, {updateEl, triggerEl: btnDec });
+        const incCounterView = App.ClickCountView(counterInc, {updateEl, triggerEl: btnInc });
+
+        decCounterView.updateView();
       })()
     </script>
   </body>
