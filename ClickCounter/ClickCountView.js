@@ -5,7 +5,7 @@ App.ClickCountView = (clickCounter, options) => {
   if (!options.updateEl) throw new Error(App.ClickCountView.messages.noUpdateEl)
 
   console.log(options);
-  
+
   const view = {
     updateView() {
       options.updateEl.innerHTML = clickCounter.getValue()
@@ -18,7 +18,7 @@ App.ClickCountView = (clickCounter, options) => {
   }
   
   options.triggerEl.addEventListener('click', () => {
-    
+    view.increaseAndUpdateView();
   });
   
   return view;
